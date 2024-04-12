@@ -11,17 +11,24 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         using: function () {
+
+            Route::middleware('web')
+            ->group(base_path('routes/admin/web.php'));
+
             Route::domain('apps.' . env('SITE_URL'))
             ->middleware('web')
             ->group(base_path('routes/domains/apps.php'));
 
-            Route::domain('apps.' . env('SITE_URL'))
+            Route::domain('contact.' . env('SITE_URL'))
             ->middleware('web')
             ->group(base_path('routes/domains/contact.php'));
 
             Route::domain(env('SITE_URL'))
             ->middleware('web')
             ->group(base_path('routes/domains/web.php'));
+            
+            Route::middleware('web')
+            ->group(base_path('routes/assiatech/web.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {

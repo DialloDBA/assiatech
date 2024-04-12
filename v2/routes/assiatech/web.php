@@ -5,8 +5,8 @@ use App\Http\Controllers\AssiaController;
 
 Route::controller(AssiaController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('/contact', 'contact')->name('contact');
-    Route::post('/contact', 'new_contact_message')->name('contact.store');
+    // Route::get('/contact', 'contact')->name('contact');
+    // Route::post('/contact', 'new_contact_message')->name('contact.store');
     Route::get('/apropos-de-nous', 'contact')->name('about');
     Route::get('/nos-services', 'contact')->name('services');
     Route::get('/nos-projets-realises', 'contact')->name('portofolio');

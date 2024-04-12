@@ -11,7 +11,8 @@ class ContactDomainController extends Controller
      */
     public function index()
     {
-        return "ContactDomainController";
+        
+        return view("assia.pages.contact.index");
     }
 
     /**
