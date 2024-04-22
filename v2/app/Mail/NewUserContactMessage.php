@@ -2,27 +2,26 @@
 
 namespace App\Mail;
 
+use App\Models\ContactMessage;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class NewContactMessageMail extends Mailable
+class NewUserContactMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $data ;
-    public function __construct($data)
+    public $contact ;
+    public function __construct(ContactMessage $contact)
     {
-        $this->data = $data ;
+        $this->contact = $contact ;
     }
-    
 
     /**
      * Get the message envelope.
@@ -30,8 +29,7 @@ class NewContactMessageMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('nepasrepondre-donotreply@assiatech.com', 'Assia Technologie SARL'),
-            subject: 'Accusé de Reception',
+            subject: __('Message de Confirmation - ') .$this->contact->sujet,
         );
     }
 
@@ -41,7 +39,14 @@ class NewContactMessageMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view : 'emails.contact.index',
+            markdown: 'emails.messages.news',
+            with: [
+                "logo"=>"logo",
+                "show"=>true,
+                "url"=>env('SITE_URL'),
+                'nom' => $this->contact->nom,
+                'message'=>"Bonjour M/Mme ".$this->contact->nom ."! <br>Nous avons bien reçu votre message.<br><br>Un Membre de notre équipe vous contactera.",
+            ]
         );
     }
 

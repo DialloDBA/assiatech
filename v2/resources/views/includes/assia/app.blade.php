@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{config("app.name")}} Web Design &amp; Digital Marketing Agency HTML Template</title>
-    <meta name="description" content="Creative Agency, Marketing Agency Template">
+    <title>{{config("app.name")}} Web Design &amp; Digital Marketing Agency</title>
+    <meta name="description" content="Creative Agency, Marketing Agency ">
     <meta name="keywords" content="Creative Agency, Marketing Agency">
     <meta name="author" content="{{config("app.name")}} - Diallodba ">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

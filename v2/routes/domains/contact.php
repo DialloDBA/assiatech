@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::group(['domain' => 'contact.assiatech.web'], function()
+Route::group(['domain' => 'contact.'. env('SITE_URL')], function()
 {
     // contact.assiatech.com/
     Route::get('/', 'App\Http\Controllers\ContactDomainController@index')->name('contact');

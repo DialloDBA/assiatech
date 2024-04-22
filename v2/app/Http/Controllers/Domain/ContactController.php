@@ -1,43 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Domain;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.index');
+        //
     }
 
-    /**
-     * 
-     */
-    public function login()
-    {
-        if(Auth::check()){
-            return \to_route("admin.home");
-        }
-        return view("auth.admin_login");
-    }
-     /* 
-     * 
-     */
-    public function forgotPassword()
-    {
-        return view("auth.forgot_password");
-    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        dd(base_path("resources/views"));
+        //
     }
 
     /**

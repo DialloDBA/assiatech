@@ -29,13 +29,21 @@
                             <h3>Please fill in the form below.</h3>
                         </div>
                         <div class="form-body">
-                            <form action="#" method="post" name="feedback-form">
+                            <form action="{{route('login')}}" method="POST" name="feedback-form">
+                                @csrf
+                                @method("POST")
                                 <div class="fieldsets row">
                                     <div class="col-md-8 offset-md-2">
-                                        <input type="text" placeholder="Nom d'Utilisateur , Adresse Email ou Telephone" value="" name="username" required>
+                                        <input type="text" placeholder="Nom d'Utilisateur , Adresse Email ou Telephone" value="" name="email" required>
+                                        @error('email')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-md-8 offset-md-2">
                                         <input type="password" name="password" placeholder="*************************" required value="">
+                                        @error('password')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 

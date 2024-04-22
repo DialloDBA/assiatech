@@ -21,7 +21,16 @@
             </a>
         </div>
         <div class="sidetwo">
-            <a href="{{route('about')}}">Notre profil</a> | <a href="{{route('carriere')}}">Carrière</a>
+            <a href="{{route('about')}}" class="">{{__('Carrières')}}</a> 
+            |<a href="{{route('about')}}" target="_blank">Espace Client</a> 
+            | <a href="{{route('login')}}">Connexion</a>
+            
+            @if (App::isLocale('fr'))
+                | <a href="#" class="text-uppercase"><img height="26" width="26" src="{{ asset('asset/images/flags/fr.png')}}" alt="" srcset=""> {{__('fr')}}</a>
+            @else
+            | <a href="#" class="text-uppercase"> <img src="{{ asset('asset/images/flags/us.png')}}" alt="" srcset=""> {{__('en')}}</a>
+            @endif
+            
         </div>
     </div>
     <div class="container-fluid m-p-l-r-0">
